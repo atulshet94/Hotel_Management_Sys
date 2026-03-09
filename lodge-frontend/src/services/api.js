@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
+const API_BASE_URL = (import.meta.env.VITE_API_URL || "").trim();
+const API_TARGET_LABEL = API_BASE_URL || "the current site";
 
 const api = axios.create({
   baseURL: API_BASE_URL,
@@ -41,7 +42,7 @@ export function checkoutBooking(bookingId) {
 
 export function getErrorMessage(error, fallback = "Something went wrong") {
   if (error?.code === "ERR_NETWORK" || error?.message === "Network Error") {
-    return `Cannot connect to the local server at ${API_BASE_URL}. Start MySQL and the backend server on this computer.`;
+    return `Cannot connect to ${API_TARGET_LABEL}. Verify the backend service is running and reachable.`;
   }
 
   return error?.response?.data?.msg || error?.response?.data?.message || error?.message || fallback;

@@ -8,7 +8,7 @@ function asNumber(value, fallback) {
 }
 
 function asArray(value, fallback) {
-  return (value || fallback)
+  return (value || fallback || "")
     .split(",")
     .map((entry) => entry.trim())
     .filter(Boolean);
@@ -16,7 +16,7 @@ function asArray(value, fallback) {
 
 module.exports = {
   port: asNumber(process.env.PORT, 5000),
-  corsOrigins: asArray(process.env.CORS_ORIGIN, "http://localhost:3000"),
+  corsOrigins: asArray(process.env.CORS_ORIGIN, ""),
   db: {
     host: process.env.DB_HOST || "localhost",
     port: asNumber(process.env.DB_PORT, 3306),

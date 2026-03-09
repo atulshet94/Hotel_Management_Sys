@@ -11,6 +11,45 @@ It includes:
 - MySQL-backed rooms and bookings APIs
 - scanned ID upload and browser camera guest photo capture
 
+## Railway deployment
+
+This repo is a monorepo, so deploying the repository root directly to Railway without a root app definition causes the error:
+
+- `Script start.sh not found`
+- `Railpack could not determine how to build the app`
+
+The root [package.json](/c:/Users/atuln/OneDrive/Desktop/HotelSystem/SanmanLodge/package.json) now fixes that by giving Railway a build target and start target:
+
+- `npm run build` builds the React frontend
+- `npm start` runs the Express backend
+- the backend serves [lodge-frontend/dist](/c:/Users/atuln/OneDrive/Desktop/HotelSystem/SanmanLodge/lodge-frontend/dist) in production
+
+### Railway steps
+
+1. Create one Railway service from this repository.
+2. Deploy the repository root `SanmanLodge/`.
+3. Add the required backend variables in Railway:
+
+```env
+PORT=5000
+DB_HOST=your_mysql_host
+DB_PORT=3306
+DB_USER=your_mysql_user
+DB_PASSWORD=your_mysql_password
+DB_NAME=sanmanlodge
+DEFAULT_OWNER_PASSWORD=Owner@123
+DEFAULT_EMPLOYEE_PASSWORD=Emp@123
+```
+
+4. Set `CORS_ORIGIN` only if you want to restrict allowed browser origins. Leave it empty for same-service Railway deploys.
+5. After the first successful deploy, open a Railway shell and run:
+
+```bash
+npm run set-passwords
+```
+
+If you prefer separate frontend and backend services, set each Railway service root directory to [lodge-frontend](/c:/Users/atuln/OneDrive/Desktop/HotelSystem/SanmanLodge/lodge-frontend) and [lodge-backend](/c:/Users/atuln/OneDrive/Desktop/HotelSystem/SanmanLodge/lodge-backend) instead of deploying the repo root as one app.
+
 ## Project structure
 
 ```text
