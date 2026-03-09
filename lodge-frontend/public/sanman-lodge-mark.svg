@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="Sanman Lodge logo">
+  <defs>
+    <linearGradient id="roof" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1d4d73" />
+      <stop offset="100%" stop-color="#0c2236" />
+    </linearGradient>
+    <linearGradient id="frame" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#d1a85a" />
+      <stop offset="100%" stop-color="#9f7221" />
+    </linearGradient>
+  </defs>
+  <rect width="128" height="128" rx="28" fill="#f7f2e8" />
+  <path d="M20 58 64 24l44 34v8H20z" fill="url(#roof)" />
+  <path d="M30 62h68v36H30z" fill="#fffdf8" stroke="url(#frame)" stroke-width="6" />
+  <path d="M54 74h20v24H54z" fill="url(#roof)" />
+  <path d="M40 72h10v10H40zm38 0h10v10H78z" fill="url(#frame)" />
+  <path d="M31 102h66" stroke="url(#frame)" stroke-width="6" stroke-linecap="round" />
+</svg>

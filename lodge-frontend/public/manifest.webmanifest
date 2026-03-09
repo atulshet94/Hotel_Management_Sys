@@ -1,0 +1,17 @@
+{
+  "name": "Sanman Lodge Console",
+  "short_name": "Sanman Lodge",
+  "description": "Local hotel management workspace for Sanman Lodge.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#102437",
+  "theme_color": "#102437",
+  "icons": [
+    {
+      "src": "/sanman-lodge-mark.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
