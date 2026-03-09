@@ -14,15 +14,19 @@ function asArray(value, fallback) {
     .filter(Boolean);
 }
 
+function firstDefined(...values) {
+  return values.find((value) => value !== undefined && value !== null && value !== "");
+}
+
 module.exports = {
   port: asNumber(process.env.PORT, 5000),
   corsOrigins: asArray(process.env.CORS_ORIGIN, ""),
   db: {
-    host: process.env.DB_HOST || "localhost",
-    port: asNumber(process.env.DB_PORT, 3306),
-    user: process.env.DB_USER || "root",
-    password: process.env.DB_PASSWORD || "",
-    database: process.env.DB_NAME || "sanmanlodge",
+    host: firstDefined(process.env.DB_HOST, process.env.MYSQLHOST, "localhost"),
+    port: asNumber(firstDefined(process.env.DB_PORT, process.env.MYSQLPORT), 3306),
+    user: firstDefined(process.env.DB_USER, process.env.MYSQLUSER, "root"),
+    password: firstDefined(process.env.DB_PASSWORD, process.env.MYSQLPASSWORD, "AtulShet$123"),
+    database: firstDefined(process.env.DB_NAME, process.env.MYSQLDATABASE, "sanmanlodge"),
   },
   defaultOwnerPassword: process.env.DEFAULT_OWNER_PASSWORD || "Owner@123",
   defaultEmployeePassword: process.env.DEFAULT_EMPLOYEE_PASSWORD || "Emp@123",
