@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const API_BASE_URL = (import.meta.env.VITE_API_URL || "").trim();
+const DEFAULT_API_URL = "https://hotelmanagementsys-production.up.railway.app";
+const API_BASE_URL = (import.meta.env.VITE_API_URL || DEFAULT_API_URL).trim().replace(/\/+$/, "");
 const API_TARGET_LABEL = API_BASE_URL || "the current site";
 
 const api = axios.create({
